@@ -23,9 +23,11 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.semiTableView.alpha = 0.6f;
     for (int i = 0; i < 100; i++) {
         [self.dateSourceArray addObject:[NSString stringWithFormat:@"SemiData%d", i]];
     }

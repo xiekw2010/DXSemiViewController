@@ -34,6 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.contentView.alpha = 0.6f;
     self.contentView.backgroundColor = [UIColor greenColor];
 }
 

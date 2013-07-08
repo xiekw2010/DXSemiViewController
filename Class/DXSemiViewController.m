@@ -33,7 +33,7 @@
     UIView *anotherView = [[UIView alloc] init];
     anotherView.backgroundColor = [UIColor clearColor];
     anotherView.userInteractionEnabled = YES;
-
+    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissSemi:)];
 
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissSemi:)];
@@ -42,6 +42,8 @@
     if (self.direction == SemiViewControllerDirectionLeft) {
         selfViewFrame.size.width = CGRectGetWidth(selfViewFrame) - self.sideOffset;
         self.contentView.frame = selfViewFrame;
+        self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin;
+        anotherView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         
         selfViewFrame.size.width = self.sideOffset;
         selfViewFrame.origin.x = CGRectGetMaxX(self.contentView.frame);
@@ -53,6 +55,8 @@
         selfViewFrame.size.width = CGRectGetWidth(selfViewFrame) - self.sideOffset;
         selfViewFrame.origin.x = self.sideOffset;
         self.contentView.frame = selfViewFrame;
+        self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin;
+
         
         selfViewFrame.origin.x = CGRectGetMinX(self.view.bounds);
         selfViewFrame.size.width = self.sideOffset;

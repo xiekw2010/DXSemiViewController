@@ -29,9 +29,12 @@
     if (self = [super init]) {
         self.titleLabelHeight = 44.0f;
         self.cellAnimationDuration = 0.7f;
+        self.tableViewRowHeight = 44.0f;
         self.dateSourceArray = [NSMutableArray array];
         self.semiTitleLabel = [[UILabel alloc] init];
+        self.semiTitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         self.semiTableView = [[UITableView alloc] init];
+        self.semiTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     }
     return self;
 }
@@ -48,6 +51,7 @@
     [self.contentView addSubview:self.semiTableView];
     self.semiTableView.dataSource = self;
     self.semiTableView.delegate = self;
+    self.semiTableView.rowHeight = self.tableViewRowHeight;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -71,7 +75,9 @@
         return;
     }
     
-    CGFloat delay = indexPath.row <= ([self isScreen568] ? 11 : 9) ? 0.05f * indexPath.row : 0.01f;
+    NSInteger baseRows = ceilf(CGRectGetHeight(self.semiTableView.bounds) / self.tableViewRowHeight) - 1;
+    
+    CGFloat delay = indexPath.row <= baseRows ? 0.05f * indexPath.row : 0.01f;
     
     switch (self.direction) {
         case SemiViewControllerDirectionRight: {

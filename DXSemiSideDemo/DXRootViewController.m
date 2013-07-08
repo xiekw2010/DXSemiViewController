@@ -34,31 +34,33 @@
     
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftBtn setTitle:@"ShowLeft" forState:UIControlStateNormal];
-    [leftBtn setBackgroundColor:[UIColor greenColor]];
-    leftBtn.frame = CGRectMake((CGRectGetWidth(self.view.bounds) - 200) * 0.5, 50, 200, 50);
+    [leftBtn setBackgroundColor:[UIColor redColor]];
+    leftBtn.frame = CGRectMake((CGRectGetWidth(self.view.bounds) - 200) * 0.5, 20, 200, 50);
     [self.view addSubview:leftBtn];
     [leftBtn addTarget:self action:@selector(showLeftSemi:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightBtn setTitle:@"ShowRight" forState:UIControlStateNormal];
     [rightBtn setBackgroundColor:[UIColor redColor]];
-    rightBtn.frame = CGRectMake(CGRectGetMinX(leftBtn.frame), 120, 200, 50);
+    rightBtn.frame = CGRectMake(CGRectGetMinX(leftBtn.frame), 90, 200, 50);
     [self.view addSubview:rightBtn];
     [rightBtn addTarget:self action:@selector(showRightSemi:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *leftTable = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftTable setTitle:@"ShowLeftTableSemi" forState:UIControlStateNormal];
     [leftTable setBackgroundColor:[UIColor redColor]];
-    leftTable.frame = CGRectMake(CGRectGetMinX(leftBtn.frame), 190, 200, 50);
+    leftTable.frame = CGRectMake(CGRectGetMinX(leftBtn.frame), 160, 200, 50);
     [self.view addSubview:leftTable];
     [leftTable addTarget:self action:@selector(showLeftTableSemi:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *rightTable = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightTable setTitle:@"ShowLeftTableSemi" forState:UIControlStateNormal];
     [rightTable setBackgroundColor:[UIColor redColor]];
-    rightTable.frame = CGRectMake(CGRectGetMinX(leftBtn.frame), 260, 200, 50);
+    rightTable.frame = CGRectMake(CGRectGetMinX(leftBtn.frame), 230, 200, 50);
     [self.view addSubview:rightTable];
     [rightTable addTarget:self action:@selector(showrightTableSemi:) forControlEvents:UIControlEventTouchUpInside];
+    
+    leftBtn.autoresizingMask = rightBtn.autoresizingMask = leftTable.autoresizingMask = rightTable.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin;
 }
 
 - (void)showLeftSemi:(id)sender
@@ -77,6 +79,7 @@
 {
     DXSubclassSemiTableViewController *semiLeft = [[DXSubclassSemiTableViewController alloc] init];
     semiLeft.semiTitleLabel.text = @"SemiLeftTableView";
+    semiLeft.tableViewRowHeight = 80.0f;
     self.leftSemiViewController = semiLeft;
 }
 

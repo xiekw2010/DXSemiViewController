@@ -22,5 +22,6 @@
 
 @property (nonatomic, assign) CGFloat titleLabelHeight;
 @property (nonatomic, assign) CGFloat cellAnimationDuration;
+@property (nonatomic, assign) CGFloat tableViewRowHeight;
 
 @end
